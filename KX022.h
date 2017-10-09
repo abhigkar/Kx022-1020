@@ -107,6 +107,8 @@ template <class T>
 void KX022<T>::init(uint8_t range, uint8_t rate)
 {
    _range = range;
+   
+   _i2c.begin();
 
    writeTwoBytes(KX022_CNTL1_REG,
                  (KX022_CNTL1_VALUE_STANDBY & ~KX022_ACC_OUTPUT_RATE_MASK) |
