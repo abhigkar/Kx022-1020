@@ -100,7 +100,7 @@ class KX022
    uint8_t _i2c_address;
    void writeTwoBytes(uint8_t one, uint8_t two);
    uint8_t getByte(uint8_t reg_address);
-   void getRawXYZ(int16_t xyz[3], uint8_t base_reg_location = DATA_OUT_BASE);
+   void getRawXYZ(int16_t (&xyz)[3], uint8_t base_reg_location = DATA_OUT_BASE);
 };
 
 template <class T>
@@ -152,7 +152,7 @@ uint8_t KX022<T>::getByte(uint8_t reg_address)
 }
 
 template <class T>
-void KX022<T>::getRawXYZ(int16_t xyz[3], uint8_t base_reg_location)
+void KX022<T>::getRawXYZ(int16_t (&xyz)[3], uint8_t base_reg_location)
 {
    _i2c->beginTransmission(_i2c_address);
    _i2c->write(base_reg_location);
